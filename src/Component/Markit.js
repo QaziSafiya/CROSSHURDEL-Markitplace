@@ -9,7 +9,8 @@ import {
 import { useState } from "react";
 import Place from "./Place";
 
-const Markit = () => {
+const Markit = (props) => {
+  const { show, setShow,setshowmarket, setname,setBuysell} = props;
   const [toggleshow, setToggleshow] = useState(false);
 
   const toggle = () => {
@@ -55,7 +56,7 @@ const Markit = () => {
           <button onClick={toggle}>Markit</button>
         </li>
       </div>
-      {toggleshow && <Place />}
+      {toggleshow && <Place setshow={setShow} setshowmarket = {setshowmarket} setname = {setname}  setBuySell = {setBuysell} />}
     </div>
   );
 };
