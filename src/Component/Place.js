@@ -3,7 +3,8 @@ import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { lazy, Suspense } from "react";
 const Chatdiv = lazy(() => import("./Chatdiv.js"));
 
-const Place = () => {
+const Place = (props) => {
+  const { setshow, setshowmarket,setBuySell, setname } = props
   const [view, setView] = useState(true);
   const [showchat, setShowchat] = useState(false);
   const [name, setName] = useState("");
@@ -49,15 +50,17 @@ const Place = () => {
         <button
           className="w-[50px] h-[50px]  rounded-full mt-[30px] ml-[300px]  "
           type="submit"
+          onClick={() => {
+            setshow(false)
+            setshowmarket(true)
+            setname(name)
+            setBuysell(buysell)
+          }}
         >
           <IoIosArrowDroprightCircle size={50} className="bg-gray-800" />
         </button>
       </form>
     </div>
-  ) : (
-    <Suspense fallback={<h1>Loading the chatdiv</h1>}>
-      <Chatdiv name={name} buysell={buysell} />
-    </Suspense>
-  );
+  ) : null
 };
 export default Place;
